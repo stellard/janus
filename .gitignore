@@ -16,4 +16,5 @@ colors
 indent
 .VimballRecord
 backup
+bundle
 compiler

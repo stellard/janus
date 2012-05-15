@@ -1,3 +1,4 @@
+call pathogen#infect()
 " Include user's local pre .vimrc config
 if filereadable(expand("~/.vimrc.pre"))
   source ~/.vimrc.pre
@@ -75,6 +76,11 @@ endfunction
 
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
+
+au BufRead,BufNewFile {olap_deploy}  set ft=ruby
+
+" ETL files are ruby
+au BufNewFile,BufRead *.{ctl,ebf} set filetype=ruby
 
 " md, markdown, and mk are markdown and define buffer-local preview
 au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
@@ -155,3 +161,19 @@ endif
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+set guifont=Bitstream\ Vera\ Sans\ Mono:h14
+
+" This is for auto aligning cucumber tables
+"inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+"
+"function! s:align()
+"  let p = '^\s*|\s.*\s|\s*$'
+"  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+"    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+"    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+"    Tabularize/|/l1
+"    normal! 0
+"    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+"  endif
+"endfunction
