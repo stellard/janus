@@ -1,0 +1,12 @@
+[submodule "bundle/zoom.vim"]
+	path = bundle/zoom.vim
+	url = git://github.com/vim-scripts/zoom.vim.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
+[submodule "bundle/vim-qargs"]
+	path = bundle/vim-qargs
+	url = git://github.com/nelstrom/vim-qargs.git
+[submodule "bundle/vim-repeat"]
+	path = bundle/vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
